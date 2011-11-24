@@ -4,19 +4,17 @@
 // The closing /mediaquery comment is required by respond.js min/max-width Media Query polyfill
 //
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 480px)
   // Style adjustments for viewports 480px and over go here
-  
-}/*/mediaquery*/
 
-@media only screen and (min-width: 768px) {
+/*/mediaquery
+
+@media only screen and (min-width: 768px)
   // Style adjustments for viewports 768px and over go here
-  
-}/*/mediaquery*/
 
+/*/mediaquery
 
 // Print styles
 // Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
-@media print {
-  @include media-print;
-}
+@media print
+  +media-print
