@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem "devise", ">= 1.4.9"
 gem "haml"
 gem 'therubyracer'
+gem "paperclip", "~> 2.4"
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
