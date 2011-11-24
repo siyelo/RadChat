@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem "devise", ">= 1.4.9"
 gem "haml"
+gem 'therubyracer'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
