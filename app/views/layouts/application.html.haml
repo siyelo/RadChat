@@ -13,8 +13,9 @@
 
       #main{ :role => 'main' }
         = render "layouts/flashes"
-        = yield
-      .push
+        .wrapper
+          = yield
+        .push
 
     %footer#footer
       = render "layouts/footer"
