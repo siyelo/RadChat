@@ -6,7 +6,4 @@
 
 %br/
 - @rooms.each do |room|
-  - debugger
-  = room.name
-
-
+  = link_to room.name, room

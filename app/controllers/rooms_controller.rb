@@ -1,8 +1,13 @@
-class RoomsController < InheritedResources::Base
+class RoomsController < ApplicationController
   before_filter :authenticate_user!
 
   def new
+    # TODO: this is obviously broken!
     @room = current_user.companies.first.rooms.new
+  end
+
+  def show
+    @room = Room.first
   end
 
   def create
@@ -30,5 +35,4 @@ class RoomsController < InheritedResources::Base
       render :edit
     end
   end
-
 end
