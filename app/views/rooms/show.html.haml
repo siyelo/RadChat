@@ -1,0 +1,13 @@
+= render 'chat', :room => @room
+
+= @room.title
+
+.chat_container
+  #chat_room
+    %p.alert
+      Welcome to the chat room
+      = current_user.username
+
+  = form_tag room_messages_url(@room), :remote => true do
+    = text_field_tag :message
+    = submit_tag :submit

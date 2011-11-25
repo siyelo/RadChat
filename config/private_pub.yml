@@ -1,0 +1,9 @@
+development:
+  server: "http://localhost:9292/faye"
+  secret_token: "secret"
+test:
+  server: "http://localhost:9292/faye"
+  secret_token: "secret"
+production:
+  server: "http://example.com/faye"
+  secret_token: "3c9e4dbce4b01ef67c084a37845a99555d8e46a9ed92dd62d33db161a7a2bea6"
