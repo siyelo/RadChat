@@ -1,1 +1,8 @@
 == Welcome to RadChat
+
+
+## Development
+
+### Start Faye server
+
+    rackup faye.ru -E production -s thin

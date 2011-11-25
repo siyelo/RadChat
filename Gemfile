@@ -8,6 +8,8 @@ gem 'haml'
 gem 'therubyracer'
 gem 'paperclip', '~> 2.4'
 gem 'twitter-bootstrap-rails'
+gem 'inherited_resources'
+gem 'faye'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
@@ -21,7 +23,7 @@ group :development do
   gem 'mongrel', '1.2.0.pre2'
   gem 'haml-rails', '>= 0.3.4'
   gem "rspec-rails", ">= 2.7.0"
-  gem "ruby-debug19"
+  # gem "ruby-debug19"
 
   ## Guard
   gem 'guard'
