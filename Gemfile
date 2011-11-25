@@ -8,6 +8,7 @@ gem 'haml'
 gem 'therubyracer'
 gem "paperclip", "~> 2.4"
 gem 'twitter-bootstrap-rails'
+gem 'inherited_resources'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
