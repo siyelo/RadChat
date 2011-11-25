@@ -6,7 +6,7 @@ gem 'jquery-rails'
 gem 'devise', '>= 1.4.9'
 gem 'haml'
 gem 'therubyracer'
-gem "paperclip", "~> 2.4"
+gem 'paperclip', '~> 2.4'
 gem 'twitter-bootstrap-rails'
 gem 'inherited_resources'
 
@@ -40,4 +40,8 @@ group :test do
   gem "database_cleaner", ">= 0.6.7"
   gem "launchy", ">= 2.0.5"
   gem 'shoulda'
+end
+
+group :development, :test do
+  gem 'jasminerice'
 end
