@@ -125,4 +125,38 @@ describe User do
     end
   end
 
+  describe "rooms" do
+    before :each do
+      @user = User.create!(@attr)
+      @room = @user.companies.first.rooms.create!(name: "eh", title: "ehtitle",
+                                          description: "ehdesc")
+      ## company2
+      @company2 = Company.create!(name: "room2")
+      Membership.create!(user: @user, company: @company2)
+      @room2 = @user.companies[1].rooms.create!(name: "room2", title: "room2title",
+                                                description: "desc")
+    end
+
+    it "should allow a user to see the rooms in his company" do
+      @user.available_rooms.should include @room
+      @user.available_rooms.should include @room2
+    end
+
+    it "should not show rooms that are not in the other companies" do
+      @user1 = User.create!({:first_name => "green",
+        :last_name => "icecream",
+        :username => "aapp",
+        :email => "usedr@example.com",
+        :password => "foobar",
+        :password_confirmation => "foobar",
+        :user_company => "superness"})
+      @room3 = @user1.companies.first.rooms.create!(name: "meh", title: "mehtitle",
+                                          description: "mehdesc")
+      @user.available_rooms.should_not include @room3
+      @user.available_rooms.should include @room
+      @user.available_rooms.should include @room2
+
+    end
+  end
+
 end

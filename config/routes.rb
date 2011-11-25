@@ -9,6 +9,8 @@ Radchat::Application.routes.draw do
     end
   end
 
+  resources :rooms, :except => [:index]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

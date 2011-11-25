@@ -1,0 +1,12 @@
+%h1 Lobby
+
+%h3 Chat rooms
+
+= link_to "Create new room", new_room_path
+
+%br/
+- @rooms.each do |room|
+  - debugger
+  = room.name
+
+
