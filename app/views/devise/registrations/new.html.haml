@@ -7,7 +7,7 @@
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       = devise_error_messages!
       %fieldset
-        %legend Example form legend
+        %legend SIGN UP!!!
         .clearfix
           = f.label :first_name
           .input
@@ -23,7 +23,7 @@
         .clearfix
           = f.label :email
           .input
-            = f.text_field :email
+            = f.email_field :email
         .clearfix
           = f.label :user_company
           .input
