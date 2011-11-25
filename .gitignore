@@ -17,3 +17,6 @@
 #Ignore vagrant files
 Vagrantfile
 .vagrant
+
+#rvmrc file
+.rvmrc
