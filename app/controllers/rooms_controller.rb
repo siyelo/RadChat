@@ -14,10 +14,10 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = current_user.rooms.build(params[:room])
+    @room = current_user.companies.first.rooms.build(params[:room])
     if @room.save!
       flash[:notice] = "Created room."
-      redirect_to lobby_users_path
+      redirect_to rooms_url
     else
       flash[:error] = "Couldn't create room."
       render :new
