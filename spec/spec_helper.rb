@@ -39,6 +39,12 @@ require 'email_spec'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+
+  # sign in for users because they now need to be confirmed
+  def test_sign_in(user)
+    user.confirm!
+    controller.sign_in(user)
+  end
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

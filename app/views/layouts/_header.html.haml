@@ -7,16 +7,12 @@
           - current_user.companies.each do |company|
             %li
               = link_to company.name
-          -# %li.active
-          -#   %a{:href => "#"} Chat 1
-          -# %li
-          -#   %a{:href => "#1"} Chat 2
 
       .pull-right
         %ul.nav
           - if user_signed_in?
             %li= link_to "Profile", edit_user_registration_path
-            %li= link_to_if current_user.current_company_id, "Lobby", lobby_company_path(current_user.current_company)
+            %li= link_to_if current_user.current_company_id, "Lobby", company_path(current_user.current_company)
             %li= link_to "Settings", edit_company_path(current_user.current_company)
             %li= link_to "Sign out", destroy_user_session_path, :method => :delete
           - else

@@ -10,8 +10,19 @@
           = f.label :name
           .input
             = f.text_field :name
+        .clearfix
+          = f.label :timezone
+          .input
+            = f.time_zone_select :timezone, ActiveSupport::TimeZone.us_zones
         / /clearfix
         .actions
           = f.submit "Update Company", :class => "btn primary"
           \&nbsp;
           %button.btn{:type => "reset"} Cancel
+
+  .span12
+    %fieldset
+      %legend
+        Rooms
+        - current_user.current_company.rooms.each do |room|
+          = link_to "Edit #{ room.name }", edit_room_path(room)

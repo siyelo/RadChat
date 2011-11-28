@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def lobby
+  def show
     @rooms = current_user.current_company.rooms
   end
 end

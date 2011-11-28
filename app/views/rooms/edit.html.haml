@@ -1,0 +1,31 @@
+.row
+  .span4
+    %h2 Welcome to RadChat
+    %p RadChat is bla bla bla. Please register.
+  .span12
+    = form_for(@room) do |f|
+      %fieldset
+        %legend Edit room
+        .clearfix
+          = f.label :name
+          .input
+            = f.text_field :name
+        .clearfix
+          = f.label :title
+          .input
+            = f.text_field :title
+        .clearfix
+          = f.label :description
+          .input
+            = f.text_field :description
+        .actions
+          = f.submit "Update Company", :class => "btn primary"
+          \&nbsp;
+          %button.btn{:type => "reset"} Cancel
+
+  .span12
+    %fieldset
+      %legend
+        Rooms
+        - current_user.current_company.rooms.each do |room|
+          = link_to "Edit #{ room.name }", edit_room_path(room)
