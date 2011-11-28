@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   ### Associations
-  has_many :memberships
-  has_many :companies, :through => :memberships
+  has_many :company_memberships
+  has_many :companies, :through => :company_memberships
   has_many :rooms, :through => :companies
 
   ### Attributes
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
 
   def create_company
     company = Company.create!(name: self.user_company)
-    Membership.create!(user: self, company: company)
+    CompanyMembership.create!(user: self, company: company)
     self.current_company_id = company.id
     self.save
   end

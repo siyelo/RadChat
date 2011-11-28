@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Company do
 
   context "Associations" do
-    it { should have_many(:users).through(:memberships) }
-    it { should have_many(:memberships) }
+    it { should have_many(:users).through(:company_memberships) }
+    it { should have_many(:company_memberships) }
     it { should have_many(:rooms) }
   end
 

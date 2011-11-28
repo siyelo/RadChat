@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Membership do
+describe CompanyMembership do
   it { should belong_to(:user) }
   it { should belong_to(:company) }
 end

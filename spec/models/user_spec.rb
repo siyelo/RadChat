@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   context "associations" do
-    it { should have_many(:companies).through(:memberships) }
+    it { should have_many(:companies).through(:company_memberships) }
     it { should have_many(:rooms) }
   end
 
@@ -122,7 +122,7 @@ describe User do
       @user.companies.first.name.should == "sneakyinc"
 
       Company.count.should == 1
-      Membership.count.should == 1
+      CompanyMembership.count.should == 1
     end
 
     it "should set the current_company_id on signup" do
@@ -137,7 +137,7 @@ describe User do
                                           description: "ehdesc")
       ## company2
       @company2 = Company.create!(name: "room2")
-      Membership.create!(user: @user, company: @company2)
+      CompanyMembership.create!(user: @user, company: @company2)
       @room2 = @user.companies[1].rooms.create!(name: "room2", title: "room2title",
                                                 description: "desc")
     end
