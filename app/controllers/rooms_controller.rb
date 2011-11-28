@@ -1,6 +1,10 @@
 class RoomsController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @rooms = current_user.rooms
+  end
+
   def new
     @room = Room.new
   end

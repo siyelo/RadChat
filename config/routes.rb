@@ -9,7 +9,7 @@ Radchat::Application.routes.draw do
     end
   end
 
-  resources :rooms, :except => [:index] do
+  resources :rooms do
     resources :messages
   end
 
