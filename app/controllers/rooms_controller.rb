@@ -2,8 +2,7 @@ class RoomsController < ApplicationController
   before_filter :authenticate_user!
 
   def new
-    # TODO: this is obviously broken!
-    @room = current_user.companies.first.rooms.new
+    @room = Room.new
   end
 
   def show
@@ -11,7 +10,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = current_user.companies.first.rooms.build(params[:room])
+    @room = current_user.rooms.build(params[:room])
     if @room.save!
       flash[:notice] = "Created room."
       redirect_to lobby_users_path
@@ -26,7 +25,7 @@ class RoomsController < ApplicationController
   end
 
   def update
-    @room = current_user.companies.first.find(params[:id])
+    @room = current_user.rooms.find(params[:id])
     if @room.update_attributes(params[:room])
       flash[:notice] = "Room edited"
       redirect_to lobby_users_path
