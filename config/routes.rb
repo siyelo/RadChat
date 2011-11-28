@@ -3,12 +3,6 @@ Radchat::Application.routes.draw do
 
   devise_for :users
 
-  resources :users, :only => [] do
-    collection do
-      get 'lobby'
-    end
-  end
-
   resources :rooms do
     resources :messages
   end
