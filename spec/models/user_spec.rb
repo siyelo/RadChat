@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   context "associations" do
-    it { should have_many(:companies) }
+    it { should have_many(:companies).through(:memberships) }
   end
 
   context "validations" do
