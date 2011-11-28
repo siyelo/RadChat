@@ -124,6 +124,10 @@ describe User do
       Company.count.should == 1
       Membership.count.should == 1
     end
+
+    it "should set the current_company_id on signup" do
+      @user.reload.current_company_id.should == Company.last.id
+    end
   end
 
   describe "rooms" do
@@ -142,6 +146,7 @@ describe User do
       @user.available_rooms.should include @room
       @user.available_rooms.should include @room2
     end
+
 
     it "should not show rooms that are not in the other companies" do
       @user1 = User.create!({:first_name => "green",

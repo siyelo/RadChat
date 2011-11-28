@@ -42,5 +42,7 @@ class User < ActiveRecord::Base
   def create_company
     company = Company.create!(name: self.user_company)
     Membership.create!(user: self, company: company)
+    self.current_company_id = company.id
+    self.save
   end
 end
