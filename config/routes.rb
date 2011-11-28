@@ -2,11 +2,19 @@ Radchat::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
+  get 'people' => "users#people"
 
   resources :companies, :only => [:edit, :update, :show]
 
   resources :rooms do
     resources :messages
+  end
+
+  resources :invitations do
+    collection do
+      get 'confirm'
+      post 'create_user'
+    end
   end
 
   # The priority is based upon order of creation:
