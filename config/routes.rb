@@ -2,6 +2,7 @@ Radchat::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
+  get 'people' => "users#people"
 
   resources :companies, :only => [:edit, :update, :show]
 
@@ -12,6 +13,7 @@ Radchat::Application.routes.draw do
   resources :invitations do
     collection do
       get 'confirm'
+      post 'create_user'
     end
   end
 
