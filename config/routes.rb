@@ -9,6 +9,12 @@ Radchat::Application.routes.draw do
     resources :messages
   end
 
+  resources :invitations do
+    collection do
+      get 'confirm'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :company_memberships
   has_many :companies, :through => :company_memberships
   has_many :rooms, :through => :companies
+  has_many :invitations
 
   ### Attributes
   attr_accessor :user_company

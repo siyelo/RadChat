@@ -1,0 +1,8 @@
+= "Hi #{@invitation.first_name}"
+
+="#{@user.first_name}" + " #{@user.last_name}"
+just set up an account for you on RadChat, our group chat system.
+All you need to do is choose a username and password.
+
+CLICK THIS LINK TO GET STARTED:
+=link_to "#{confirm_invitations_url(:inv_token => @invitation.invitation_token)}", confirm_invitations_url(:inv_id => @invitation.invitation_token)
