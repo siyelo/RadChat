@@ -34,11 +34,10 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '>= 2.7.0'
-  gem 'factory_girl_rails', '>= 1.3.0'
-  gem 'capybara', '>= 1.1.1'
-  gem 'database_cleaner', '>= 0.6.7'
-  gem 'launchy', '>= 2.0.5'
+  gem "rspec-rails", ">= 2.7.0"
+  gem "factory_girl_rails", ">= 1.3.0"
+  gem "capybara", ">= 1.1.1"
+  gem "database_cleaner", ">= 0.6.7"
+  gem "launchy", ">= 2.0.5"
   gem 'shoulda'
-  gem 'email_spec'
 end
