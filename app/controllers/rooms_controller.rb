@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.first
+    @room = current_user.rooms.find(params[:id])
   end
 
   def create
@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    @room = current_user.companies.first.rooms.find(params[:id])
+    @room = current_user.rooms.find(params[:id])
   end
 
   def update
