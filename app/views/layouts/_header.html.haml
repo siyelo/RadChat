@@ -2,14 +2,15 @@
   .topbar-inner
     .container
       = link_to "RadChat", root_path, :class => 'brand'
-      %ul.nav
-        - current_user.companies.each do |company|
-          %li
-            = link_to company.name
-        -# %li.active
-        -#   %a{:href => "#"} Chat 1
-        -# %li
-        -#   %a{:href => "#1"} Chat 2
+      - if current_user
+        %ul.nav
+          - current_user.companies.each do |company|
+            %li
+              = link_to company.name
+          -# %li.active
+          -#   %a{:href => "#"} Chat 1
+          -# %li
+          -#   %a{:href => "#1"} Chat 2
 
       .pull-right
         %ul.nav
