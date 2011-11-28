@@ -3,17 +3,20 @@
     .container
       = link_to "RadChat", root_path, :class => 'brand'
       %ul.nav
-        %li.active
-          %a{:href => "#"} Chat 1
-        %li
-          %a{:href => "#1"} Chat 2
+        - current_user.companies.each do |company|
+          %li
+            = link_to company.name
+        -# %li.active
+        -#   %a{:href => "#"} Chat 1
+        -# %li
+        -#   %a{:href => "#1"} Chat 2
 
       .pull-right
         %ul.nav
           - if user_signed_in?
             %li= link_to "Profile", edit_user_registration_path
-            %li= link_to "Lobby", rooms_path
-            %li= link_to "Settings", '#'
+            %li= link_to_if current_user.current_company_id, "Lobby", lobby_company_path(current_user.current_company)
+            %li= link_to "Settings", edit_company_path(current_user.current_company)
             %li= link_to "Sign out", destroy_user_session_path, :method => :delete
           - else
             %li= link_to "Sign in", user_session_path

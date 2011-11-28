@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     companies.map { |c| c.rooms }.flatten
   end
 
+  def current_company
+    self.companies.find(current_company_id) if current_company_id
+  end
+
   private
 
   def create_company

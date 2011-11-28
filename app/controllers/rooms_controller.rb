@@ -14,10 +14,10 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = current_user.companies.first.rooms.build(params[:room])
+    @room = current_user.current_company.rooms.build(params[:room])
     if @room.save!
       flash[:notice] = "Created room."
-      redirect_to rooms_url
+      redirect_to lobby_company_path(current_user.current_company)
     else
       flash[:error] = "Couldn't create room."
       render :new
@@ -37,5 +37,11 @@ class RoomsController < ApplicationController
       flash[:error] = "Couldn't create room."
       render :edit
     end
+  end
+
+
+  def index
+    # @rooms =
+    @rooms = current_user.rooms
   end
 end

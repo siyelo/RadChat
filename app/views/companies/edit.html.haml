@@ -1,0 +1,17 @@
+.row
+  .span4
+    %h2 Welcome to RadChat
+    %p RadChat is bla bla bla. Please register.
+  .span12
+    = form_for(@company) do |f|
+      %fieldset
+        %legend Edit Company
+        .clearfix
+          = f.label :name
+          .input
+            = f.text_field :name
+        / /clearfix
+        .actions
+          = f.submit "Update Company", :class => "btn primary"
+          \&nbsp;
+          %button.btn{:type => "reset"} Cancel
