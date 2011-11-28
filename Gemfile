@@ -8,7 +8,6 @@ gem 'haml'
 gem 'therubyracer'
 gem "paperclip", "~> 2.4"
 gem 'twitter-bootstrap-rails'
-gem 'inherited_resources'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
@@ -40,4 +39,5 @@ group :test do
   gem "database_cleaner", ">= 0.6.7"
   gem "launchy", ">= 2.0.5"
   gem 'shoulda'
+  gem 'email_spec'
 end
