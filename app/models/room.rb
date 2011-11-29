@@ -9,4 +9,8 @@ class Room < ActiveRecord::Base
   belongs_to :company
   has_many :messages, :dependent => :destroy
   has_and_belongs_to_many :users
+
+  def last_message
+    messages.order('id DESC').last
+  end
 end

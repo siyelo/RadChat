@@ -4,6 +4,13 @@
 
 = link_to "Create new room", new_room_path
 
-%br/
-- @rooms.each do |room|
-  = link_to room.name, room
+%ul
+  - @rooms.each do |room|
+    %li
+      = link_to room.name, room
+      %p
+        Last updated:
+        = "#{room.last_message.created_at.to_s(:short)} by #{room.last_message.user.full_name}"
+      %p
+        Members:
+        = room.users.map{|u| u.full_name}.join(', ')
