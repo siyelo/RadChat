@@ -1,10 +1,11 @@
 .row
   .span4
     %h2 Invite a new user to your RadChat account
+    %p The person you invite will receive an email with an invitation link. When they click the link they can choose their own username and password. Then they will be part of your company.
   .span12
     = form_for(@invitation) do |f|
       %fieldset
-        %legend The person you invite will receive an email with an invitation link. When they click the link they can choose their own username and password. Then they will be part of your account!
+        %legend Invite your friend
         .clearfix
           = f.label :first_name
           .input
@@ -24,6 +25,4 @@
 
         / /clearfix
         .actions
-          = f.submit "Send the invitation email", :class => "btn primary"
-          \&nbsp;
-          %button.btn{:type => "reset"} Cancel
+          = f.submit "Send invitation", :class => "btn primary"

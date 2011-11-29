@@ -1,10 +1,11 @@
 .row
   .span4
     %h2 Welcome to RadChat
-    %p RadChat is bla bla bla. Please register.
+    %p Please confirm your invitation
   .span12
     = form_for(@user, :url => create_user_invitations_path) do |f|
       %fieldset
+        %legend Select your username and password
         =f.hidden_field :inv_token, :value => params[:inv_token]
         .clearfix
           = f.label :username
@@ -22,5 +23,3 @@
         / /clearfix
         .actions
           = f.submit "Sign up", :class => "btn primary"
-          \&nbsp;
-          %button.btn{:type => "reset"} Cancel
