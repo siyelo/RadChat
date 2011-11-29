@@ -1,5 +1,7 @@
 %h1= "#{@room.name} members:"
 
+= link_to "<< back", room_path(@room)
+
 = form_tag room_memberships_url, :method => :put do
   %ul
     - @users.each do |user|

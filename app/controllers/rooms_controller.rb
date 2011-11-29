@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = @company.rooms.find(params[:id])
+    @room = current_user.rooms.find(params[:id])
     @messages = @room.messages.last(10)
   end
 
@@ -44,7 +44,6 @@ class RoomsController < ApplicationController
     flash[:notice] = 'Room was successfully destroyed'
     redirect_to company_path(@company)
   end
-
 
   private
     def load_current_company

@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     self.companies.find(current_company_id) if current_company_id
   end
 
+  def available_rooms(company)
+    rooms.select{|r| r.company == company }
+  end
+
   private
 
   def assign_company

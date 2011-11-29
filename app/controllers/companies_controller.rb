@@ -1,6 +1,10 @@
 class CompaniesController < ApplicationController
   before_filter :authenticate_user!
 
+  def show
+    @rooms = current_user.available_rooms(current_user.current_company)
+  end
+
   def edit
     @company = current_user.companies.find(params[:id])
   end
@@ -14,9 +18,5 @@ class CompaniesController < ApplicationController
       flash[:error] = "We could not update the company"
       render :edit
     end
-  end
-
-  def show
-    @rooms = current_user.current_company.rooms
   end
 end
