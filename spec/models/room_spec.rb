@@ -9,6 +9,7 @@ describe Room do
 
   describe "Associations" do
     it { should belong_to(:company) }
-    it { should have_many(:messages) }
+    it { should have_many(:messages).dependent(:destroy) }
+    it { should have_and_belong_to_many(:users) }
   end
 end

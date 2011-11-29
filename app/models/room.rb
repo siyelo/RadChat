@@ -7,5 +7,6 @@ class Room < ActiveRecord::Base
 
   ### Associations
   belongs_to :company
-  has_many :messages
+  has_many :messages, :dependent => :destroy
+  has_and_belongs_to_many :users
 end

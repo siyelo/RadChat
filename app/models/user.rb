@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   ### Associations
   has_many :company_memberships
   has_many :companies, :through => :company_memberships
-  has_many :rooms, :through => :companies
+  has_and_belongs_to_many :rooms
   has_many :invitations
 
   ### Attributes
@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
 
   def available_rooms
     companies.map { |c| c.rooms }.flatten
+  end
+
+  def full_name
+    [first_name, last_name].compact.join(' ')
   end
 
   def current_company

@@ -9,6 +9,7 @@ Radchat::Application.routes.draw do
 
   resources :rooms do
     resources :messages
+    resource :room_memberships, :as => 'memberships', :path => 'memberships'
   end
 
   resources :invitations do

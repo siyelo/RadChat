@@ -1,0 +1,10 @@
+%h1= "#{@room.name} members:"
+
+= form_tag room_memberships_url, :method => :put do
+  %ul
+    - @users.each do |user|
+      %li
+        %span= label_tag :"user_#{user.id}", user.full_name
+        %span= check_box_tag :"room[user_ids][]", user.id, @room.users.include?(user), :id => :"user_#{user.id}"
+    %li
+      = submit_tag :save

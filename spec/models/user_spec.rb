@@ -4,7 +4,7 @@ describe User do
 
   context "associations" do
     it { should have_many(:companies).through(:company_memberships) }
-    it { should have_many(:rooms) }
+    it { should have_and_belong_to_many(:rooms) }
   end
 
   context "validations" do
