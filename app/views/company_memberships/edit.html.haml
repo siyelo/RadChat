@@ -1,0 +1,17 @@
+.row
+  .span4
+    %h2 Edit roles
+  .span12
+    = form_tag company_memberships_url, :method => :put do
+      %fieldset
+        %legend= "Edit \"#{@company.name}\" user roles:"
+        - @memberships.each do |membership|
+          .clearfix
+            = label_tag :"company_membership_#{membership.id}", membership.user.full_name
+            .input
+              -if membership.user.owner?(@company)
+                %span Owner
+              -else
+                %span= select_tag :"company[company_membership_ids][#{membership.id}]", options_for_select([["Admin", CompanyMembership::ADMIN], ["Member", CompanyMembership::MEMBER]], :selected => membership.user.role?(@company)), {:id => :"company_membership_#{membership.id}"}
+        .actions
+          = submit_tag "Update Roles", :class => "btn primary"

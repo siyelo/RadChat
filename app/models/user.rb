@@ -46,6 +46,22 @@ class User < ActiveRecord::Base
     rooms.select{|r| r.company == company }
   end
 
+  def owner?(company)
+    company.company_memberships.find_by_user_id_and_company_id(self.id, company.id).role == 0
+  end
+
+  def admin?(company)
+    (company.company_memberships.find_by_user_id_and_company_id(self.id, company.id).role == 1) || owner?(company)
+  end
+
+  def member?(company)
+    company.company_memberships.find_by_user_id_and_company_id(self.id, company.id).role == 2
+  end
+
+  def role?(company)
+    company.company_memberships.find_by_user_id_and_company_id(self.id, company.id).role
+  end
+
   private
 
   def assign_company
@@ -53,7 +69,8 @@ class User < ActiveRecord::Base
     if company.nil?
       company = Company.create!(name: self.user_company)
     end
-    CompanyMembership.create!(user: self, company: company)
+    role = company.company_memberships.empty? ? 0 : 2
+    CompanyMembership.create!(user: self, company: company, role: role)
     self.current_company_id = company.id
     self.save
   end
