@@ -1,11 +1,11 @@
 .row
   .span4
-    %h2 Welcome to RadChat
-    %p RadChat is bla bla bla. Please register.
+    %h2 Create new room
+    %p Create new room to chat with your friends
   .span12
     = form_for(@room) do |f|
       %fieldset
-        %legend Add a room
+        %legend Create new room
         .clearfix
           = f.label :name
           .input
@@ -21,6 +21,4 @@
         / /clearfix
         .actions
           = f.submit "Create", :class => "btn primary"
-          \&nbsp;
-          %button.btn{:type => "reset"} Cancel
 

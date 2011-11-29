@@ -1,7 +1,6 @@
 .row
   .span4
-    %h2 Welcome to RadChat
-    %p RadChat is bla bla bla. Please register.
+    %h2 Edit your chat room
   .span12
     = form_for(@room) do |f|
       %fieldset
@@ -19,13 +18,5 @@
           .input
             = f.text_field :description
         .actions
-          = f.submit "Update Company", :class => "btn primary"
-          \&nbsp;
-          %button.btn{:type => "reset"} Cancel
-
-  .span12
-    %fieldset
-      %legend
-        Rooms
-        - current_user.current_company.rooms.each do |room|
-          = link_to "Edit #{ room.name }", edit_room_path(room)
+          = f.submit "Update Room", :class => "btn primary"
+          = link_to "Delete", room_path(@room), :class => "btn", :method => 'delete', :confirm => "Are you sure?"

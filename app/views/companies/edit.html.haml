@@ -1,6 +1,6 @@
 .row
   .span4
-    %h2 Edit your company details
+    %h2 Edit company details
   .span12
     = form_for @company, :html => { :multipart => true } do |f|
       %fieldset
@@ -22,9 +22,30 @@
         .actions
           = f.submit "Update Company", :class => "btn primary"
 
+.row
+  .span13
+    &nbsp;
+  .span3= link_to "Create new room", new_room_path, :class => 'btn'
+.row
+  .span4
+    %h2 Rooms
   .span12
-    %fieldset
-      %legend
-        Rooms
-        - current_user.current_company.rooms.each do |room|
-          = link_to "Edit #{ room.name }", edit_room_path(room)
+
+    - if @company.rooms.present?
+      %table
+        %thead
+          %tr
+            %th Room
+            %th Members
+            %th Manage
+        %tbody
+          - @company.rooms.each do |room|
+            %tr
+              %td= link_to room.name, room
+              %td
+                = room.users.map{|u| u.full_name}.join(', ')
+                = raw "(#{link_to("edit", edit_room_memberships_path(room))})"
+              %td
+                = link_to "Edit room info", edit_room_path(room)
+
+

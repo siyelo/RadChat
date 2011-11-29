@@ -14,7 +14,7 @@
             %li{:class => (params[:controller] == "companies" && params[:action] == 'show' ? 'active' : nil)}= link_to_if current_user.current_company_id, "Lobby", company_path(current_user.current_company)
             %li= link_to "Users", company_users_path(current_user.current_company)
             %li{:class => (params[:controller] == "devise/registrations" && ['edit', 'update'].include?(params[:action]) ? 'active' : nil)}= link_to "Profile", edit_user_registration_path
-            %li{:class => (params[:controller] == "companies" && ['edit', 'update'].include?(params[:action]) ? 'active' : nil)}= link_to "Settings", edit_company_path(current_user.current_company)
+            %li{:class => ((params[:controller] == "companies" && ['edit', 'update'].include?(params[:action]) || params[:controller] == 'room_memberships')  ? 'active' : nil)}= link_to "Settings", edit_company_path(current_user.current_company)
             %li= link_to "Sign out", destroy_user_session_path, :method => :delete
           - else
             %li{:class => (params[:controller] == "devise/sessions" && ['new', 'create'].include?(params[:action]) ? 'active' : nil)}= link_to "Sign in", user_session_path

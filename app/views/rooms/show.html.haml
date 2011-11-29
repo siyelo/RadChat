@@ -1,7 +1,5 @@
 = render 'chat', :room => @room
 
-= link_to "Settings", edit_room_memberships_path(@room)
-= link_to "Delete", room_path(@room), :method => "delete", :confirm => "Are you sure?"
 = @room.title
 
 .chat_container

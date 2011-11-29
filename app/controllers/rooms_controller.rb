@@ -13,12 +13,12 @@ class RoomsController < ApplicationController
 
   def create
     @room = @company.rooms.build(params[:room])
-    if @room.save!
+    if @room.save
       @room.users << current_user
       flash[:notice] = "Created room."
       redirect_to company_path(@company)
     else
-      flash[:error] = "Couldn't create room."
+      flash.now[:alert] = "Couldn't create room."
       render :new
     end
   end
@@ -30,10 +30,10 @@ class RoomsController < ApplicationController
   def update
     @room = @company.rooms.find(params[:id])
     if @room.update_attributes(params[:room])
-      flash[:notice] = "Room edited"
+      flash[:notice] = "Room was successfully updated"
       redirect_to company_path(@company)
     else
-      flash[:error] = "Couldn't create room."
+      flash.now[:error] = "Please enter valid room information."
       render :edit
     end
   end

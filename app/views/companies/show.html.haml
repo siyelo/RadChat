@@ -1,16 +1,19 @@
 %h1 Lobby
 
-= link_to "Create new room", new_room_path, :class => 'btn primary'
-
-%table
-  %thead
-    %tr
-      %th Room
-      %th Last updated
-      %th Members
-  %tbody
-    - @rooms.each do |room|
+- if @rooms.present?
+  %table
+    %thead
       %tr
-        %td= link_to room.name, room
-        %td= "#{room.last_message.created_at.to_s(:short)} by #{room.last_message.user.full_name}"
-        %td= room.users.map{|u| u.full_name}.join(', ')
+        %th Room
+        %th Members
+        %th Last updated
+    %tbody
+      - @rooms.each do |room|
+        %tr
+          %td= link_to room.name, room
+          %td= room.users.map{|u| u.full_name}.join(', ')
+          %td= "#{room.last_message.created_at.to_s(:short)} by #{room.last_message.user.full_name}" if room.last_message
+- else
+  %p
+    No chat rooms yet.
+    = link_to "Create now!", new_room_path
