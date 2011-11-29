@@ -3,11 +3,7 @@ Radchat::Application.routes.draw do
 
   devise_for :users
 
-  resources :companies, :only => [:edit, :update] do
-    member do
-      get 'lobby'
-    end
-
+  resources :companies, :only => [:show, :edit, :update] do
     resources :users
   end
 
