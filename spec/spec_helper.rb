@@ -38,6 +38,7 @@ require 'email_spec'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+
 RSpec.configure do |config|
 
   # sign in for users because they now need to be confirmed
