@@ -9,3 +9,15 @@
 //= require twitter/bootstrap
 //= require private_pub
 //= require_tree .
+
+
+// scope JS load page page id
+$(function () {
+  var id = $('body').attr("id");
+  if (id) {
+    controller_action = id;
+    if (typeof(window[controller_action]) !== 'undefined' && typeof(window[controller_action]['run']) === 'function') {
+      window[controller_action]['run']();
+    }
+  }
+});

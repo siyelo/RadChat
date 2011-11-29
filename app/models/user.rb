@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :company_memberships
   has_many :companies, :through => :company_memberships
   has_many :rooms, :through => :companies
+  has_many :invitations
 
   ### Attributes
   attr_accessor :user_company
@@ -17,7 +18,7 @@ class User < ActiveRecord::Base
   validates_presence_of :user_company, :on => :create
 
   ### Callbacks
-  after_create :create_company
+  after_create :assign_company
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -39,8 +40,11 @@ class User < ActiveRecord::Base
 
   private
 
-  def create_company
-    company = Company.create!(name: self.user_company)
+  def assign_company
+    company = Company.find_by_name(self.user_company)
+    if company.nil?
+      company = Company.create!(name: self.user_company)
+    end
     CompanyMembership.create!(user: self, company: company)
     self.current_company_id = company.id
     self.save

@@ -4,10 +4,9 @@
 
 .chat_container
   #chat_room
-    %p.alert
-      Welcome to the chat room
-      = current_user.username
+    - @messages.each do |message|
+      %p= "#{message.user.username}: #{message.message}"
 
-  = form_tag room_messages_url(@room), :remote => true do
+  = form_tag room_messages_url(@room, :format => 'js'), :id => 'new_message' do
     = text_field_tag :message
     = submit_tag :submit

@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
   before_filter :load_room
 
   def create
-    @message = { :username => current_user.username, :msg => params[:message] }
+    message = Message.create!(:room => @room, :user => current_user, :message => params[:message])
+    @message = { :username => current_user.username, :message => message.message }
 
     respond_to do |format|
       format.js
@@ -12,6 +13,7 @@ class MessagesController < ApplicationController
 
   private
     # TODO: scope rooms by company
+    # @room = current_user.current_company.rooms.find(params[:room_id])
     def load_room
       @room = Room.find(params[:room_id])
     end
