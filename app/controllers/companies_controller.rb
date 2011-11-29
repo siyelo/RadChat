@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
       flash[:notice] = "The company has been updated"
       redirect_to edit_company_path(params[:id])
     else
-      flash[:error] = "We could not update the company"
+      flash[:alert] = "We could not update the company"
       render :edit
     end
   end

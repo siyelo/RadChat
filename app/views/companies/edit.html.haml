@@ -1,14 +1,13 @@
 .row
   .span4
-    %h2 Welcome to RadChat
-    %p RadChat is bla bla bla. Please register.
+    %h2 Edit your company details
   .span12
     = form_for @company, :html => { :multipart => true } do |f|
       %fieldset
         %legend Edit Company
         .clearfix
           = f.label :avatar
-          = image_tag @company.avatar.url
+          = image_tag @company.avatar.url if @company.avatar.present?
           .input
             = f.file_field :avatar
         .clearfix
@@ -22,8 +21,6 @@
         / /clearfix
         .actions
           = f.submit "Update Company", :class => "btn primary"
-          \&nbsp;
-          %button.btn{:type => "reset"} Cancel
 
   .span12
     %fieldset

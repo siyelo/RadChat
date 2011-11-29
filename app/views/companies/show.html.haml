@@ -1,16 +1,16 @@
 %h1 Lobby
 
-%h3 Chat rooms
+= link_to "Create new room", new_room_path, :class => 'btn primary'
 
-= link_to "Create new room", new_room_path
-
-%ul
-  - @rooms.each do |room|
-    %li
-      = link_to room.name, room
-      %p
-        Last updated:
-        = "#{room.last_message.created_at.to_s(:short)} by #{room.last_message.user.full_name}"
-      %p
-        Members:
-        = room.users.map{|u| u.full_name}.join(', ')
+%table
+  %thead
+    %tr
+      %th Room
+      %th Last updated
+      %th Members
+  %tbody
+    - @rooms.each do |room|
+      %tr
+        %td= link_to room.name, room
+        %td= "#{room.last_message.created_at.to_s(:short)} by #{room.last_message.user.full_name}"
+        %td= room.users.map{|u| u.full_name}.join(', ')
