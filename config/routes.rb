@@ -2,9 +2,14 @@ Radchat::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
-  get 'people' => "users#people"
 
-  resources :companies, :only => [:edit, :update, :show]
+  resources :companies, :only => [:edit, :update] do
+    member do
+      get 'lobby'
+    end
+
+    resources :users
+  end
 
   resources :rooms do
     resources :messages

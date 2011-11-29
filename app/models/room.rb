@@ -7,4 +7,5 @@ class Room < ActiveRecord::Base
 
   ### Associations
   belongs_to :company
+  has_many :messages
 end
