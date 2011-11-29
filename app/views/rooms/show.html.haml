@@ -1,12 +1,14 @@
 = render 'chat', :room => @room
 
-= @room.title
-
-.chat_container
-  #chat_room
+%table#chat_room
+  %tbody
     - @messages.each do |message|
-      %p= "#{message.user.username}: #{message.message}"
+      %tr
+        %td= message.user.username
+        %td= message.message
 
+
+#chat_line
   = form_tag room_messages_url(@room, :format => 'js'), :id => 'new_message' do
-    = text_field_tag :message
-    = submit_tag :submit
+    = text_field_tag :message, nil, :autocomplete => "off"
+    = submit_tag :"Send message"

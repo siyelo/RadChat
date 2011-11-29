@@ -12,9 +12,7 @@ class MessagesController < ApplicationController
   end
 
   private
-    # TODO: scope rooms by company
-    # @room = current_user.current_company.rooms.find(params[:room_id])
     def load_room
-      @room = Room.find(params[:room_id])
+      @room = current_user.rooms.find(params[:room_id])
     end
 end

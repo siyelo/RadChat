@@ -2,5 +2,12 @@
 = subscribe_to room_channel(room)
 :javascript
   PrivatePub.subscribe("#{room_channel(room)}", function(data) {
-    $('</p>').html(data.username + ": " + data.message).appendTo('#chat_room');
+    $('#chat_room tbody').append(
+      $('<tr/>').append(
+        $('<td/>').text(data.username),
+        $('<td/>').text(data.message)
+      )
+    )
+
+    $('html').animate({ scrollTop: $(document).height() }, 'fast');
   });

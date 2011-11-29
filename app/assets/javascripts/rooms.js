@@ -8,5 +8,8 @@ rooms_show = {
         $.post(form.attr('action'), form.serialize());
       }
     })
+
+    $('html').animate({ scrollTop: $(document).height() }, 'fast');
+    $('#message').focus()
   }
 };

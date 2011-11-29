@@ -2,11 +2,10 @@
   .topbar-inner
     .container
       = link_to "RadChat", root_path, :class => 'brand'
-      - if current_user
+      - if current_user && @room
         %ul.nav
-          - current_user.companies.each do |company|
-            %li
-              = link_to company.name
+          %li= link_to "#{current_user.current_company.name} > #{@room.name}", room_path(@room)
+
 
       .pull-right
         %ul.nav
