@@ -1,21 +1,11 @@
 .row
   .span4
-    %h2 Welcome to RadChat
-    %p RadChat is bla bla bla. Please register.
-    = render :partial => "devise/shared/links"
+    %p= render :partial => "devise/shared/links"
   .span12
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       = devise_error_messages!
       %fieldset
-        %legend SIGN UP!!!
-        .clearfix
-          = f.label :first_name
-          .input
-            = f.text_field :first_name
-        .clearfix
-          = f.label :last_name
-          .input
-            = f.text_field :last_name
+        %legend Register to RadChat
         .clearfix
           = f.label :username
           .input
@@ -24,6 +14,14 @@
           = f.label :email
           .input
             = f.email_field :email
+        .clearfix
+          = f.label :first_name
+          .input
+            = f.text_field :first_name
+        .clearfix
+          = f.label :last_name
+          .input
+            = f.text_field :last_name
         .clearfix
           = f.label :user_company
           .input
@@ -40,5 +38,3 @@
         / /clearfix
         .actions
           = f.submit "Sign up", :class => "btn primary"
-          \&nbsp;
-          %button.btn{:type => "reset"} Cancel

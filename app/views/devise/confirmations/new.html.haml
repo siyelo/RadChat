@@ -1,0 +1,13 @@
+.row
+  .span4
+    %p= render :partial => "devise/shared/links"
+  .span12
+    = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+      %fieldset
+        %legend Resend confirmation instructions
+        .clearfix
+          = f.label :email
+          .input
+            = f.email_field :email
+        .actions
+          = f.submit "Resend confirmation instructions", :class => "btn primary"
