@@ -62,7 +62,6 @@ class User < ActiveRecord::Base
     company.company_memberships.find_by_user_id_and_company_id(self.id, company.id).role
   end
 
-
   private
 
   def assign_company

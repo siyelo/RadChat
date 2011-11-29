@@ -4,7 +4,7 @@ Radchat::Application.routes.draw do
   devise_for :users
 
   resources :companies, :only => [:show, :edit, :update] do
-    resources :users
+    resource :company_memberships, :as => 'memberships', :path => 'memberships'
   end
 
   resources :rooms do

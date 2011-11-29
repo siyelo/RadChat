@@ -1,0 +1,15 @@
+= link_to "Invite a new user", new_invitation_path
+
+%h1= "#{@company.name} members:"
+
+= form_tag company_memberships_url, :method => :put do
+  %ul
+    - @memberships.each do |membership|
+      %li
+        %span= label_tag :"company_membership_#{membership.id}", membership.user.full_name
+        -if membership.user.owner?(@company)
+          %span Owner
+        -else
+          %span= select_tag :"company[company_membership_ids][#{membership.id}]", options_for_select([["Admin", CompanyMembership::ADMIN], ["Member", CompanyMembership::MEMBER]], :selected => membership.user.role?(@company)), {:id => :"company_membership_#{membership.id}"}
+    %li
+      = submit_tag :save
